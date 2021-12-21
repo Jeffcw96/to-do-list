@@ -4,7 +4,7 @@ import { Router } from "express"
 const router = Router()
 router.route('/')
     .post(book.createBook)
-
+    .get(book.getBookList)
 
 
 export default router

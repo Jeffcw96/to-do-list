@@ -1,10 +1,14 @@
 import {Request, Response} from 'express'
-import Model from './model'
+import appModel from './model'
+import { createBook } from '../../../service/book'
 
-export default function createBookApplication(req:Request, res:Response){
+export default async function createBookApplication(req:Request, res:Response){
     try {
-        const appModel = new Model()
-        return 'good'
+        console.log("create book application")
+        const AppModel = new appModel(req.body)
+        const getCreateBookQuery = AppModel.getCreateBookQuery()
+        const result = await createBook(getCreateBookQuery)
+        return result
     } catch (error:any) {
         res.status(500).send(error.message)
     }
