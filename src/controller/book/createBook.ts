@@ -1,8 +1,8 @@
 import {Request, Response} from 'express';
+import responseHandler from '@/utils/responseHandler';
 import bookApplication from '../../application/book';
 
 export default async function createBookController(req:Request, res:Response){
-    const response = await bookApplication.createBook(req,res)
-    console.log("response",response)
-    res.json(response)
+    const result = await bookApplication.createBook(req,res)
+    responseHandler(res,result)
 }

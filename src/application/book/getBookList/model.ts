@@ -34,4 +34,28 @@ export default class GetBookListModel implements OutputParamsInterface{
 
         return query
     }
+
+    getAggregateBookListQuery(){
+        const query = new QueryGenerator()
+
+        query.addPipeline({
+            $match:{
+                ...this.advancedFilter
+            }
+        })
+
+        query.addPipeline({
+            $limit: this.limit
+        })
+
+        query.addPipeline({
+            $project:{
+                author: 1,
+                book_collection:1,
+                _id:0
+            }
+        })
+
+        return query
+    }
 }

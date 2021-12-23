@@ -1,3 +1,4 @@
+import { PipelineStage } from "mongoose"
 export default class QueryGenerator{
     private sortBy:string
     private fields:string 
@@ -5,9 +6,8 @@ export default class QueryGenerator{
     private skip:number
     private filter:object
     private insert:object
-    private updateOne:object
-    private updateMany:object
-    private pipeline:Array<object>
+    private update:object
+    private pipeline:PipelineStage[]
 
     constructor(){
         this.sortBy = "modified_datetime_utc"
@@ -16,8 +16,7 @@ export default class QueryGenerator{
         this.skip = 0
         this.filter = {}
         this.insert = {}
-        this.updateOne = {}
-        this.updateMany = {}
+        this.update = {}
         this.pipeline = []
     }
 
@@ -51,17 +50,12 @@ export default class QueryGenerator{
         return this
     }
 
-    setUpdateOne(update:object){
-        this.updateOne = update
+    setUpdate(update:object){
+        this.update = update
         return this
     }
 
-    setUpdateMany(update:object){
-        this.updateMany = update
-        return this
-    }
-
-    addPipeline(pipeline:object){
+    addPipeline(pipeline:PipelineStage){
         this.pipeline.push(pipeline)
         return this
     }
@@ -90,12 +84,8 @@ export default class QueryGenerator{
         return this.limit
     }
 
-    getUpdateOne(){
-        return this.updateOne
-    }
-
-    getUpdateMany(){
-        return this.updateMany
+    getUpdate(){
+        return this.update
     }
 
     getPipeline(){
