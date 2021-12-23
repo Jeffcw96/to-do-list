@@ -2,7 +2,7 @@ import {Request, Response} from 'express'
 import appModel from './model'
 import dcBook from '../../../dataComponent/book'
 
-import FailToInsertBookException from '@/config/exception/book/failToInsertBook'
+import {FailToInsertBookException} from '@/config/exception/book'
 
 
 export default async function createBookApplication(req:Request, res:Response){

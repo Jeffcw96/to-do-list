@@ -1,8 +1,8 @@
 import Exception from "@/utils/responseHandler/exception";
-import book from '@/config/constant/exception/book'
+import {failToGetBookListException} from '@/config/constant/exception/book'
 
 export default class FailToGetBookListException extends Exception{
     constructor(){
-        super(book.failToGetBookListException())
+        super(failToGetBookListException())
     }
 }
