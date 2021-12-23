@@ -2,9 +2,9 @@ import {Request, Response} from 'express'
 import appModel from './model'
 import dcBook from '../../../dataComponent/book'
 
-export default async function getBookListApplication(req:Request, res:Response){
+export default async function getBookListApplication(inputData: any){
     try {
-        const AppModel = new appModel(req.query)
+        const AppModel = new appModel(inputData)
         const getBookListQuery = AppModel.getBookListQuery()
         const result = await dcBook.find(getBookListQuery)
         // const getAggregateBookListQuery = AppModel.getAggregateBookListQuery()
@@ -12,6 +12,6 @@ export default async function getBookListApplication(req:Request, res:Response){
 
         return result
     } catch (error:any) {
-        res.status(500).send(error.message)
+        return error
     }
 }

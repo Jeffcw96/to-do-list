@@ -5,11 +5,11 @@ import dcBook from '../../../dataComponent/book'
 import {FailToInsertBookException} from '@/config/exception/book'
 
 
-export default async function createBookApplication(req:Request, res:Response){
+export default async function createBookApplication(inputData : any){
     try {
         console.log("create book application")
         let result
-        const AppModel = new appModel(req.body)
+        const AppModel = new appModel(inputData)
         try {
             const getCreateBookQuery = AppModel.getCreateBookQuery()
             result = dcBook.create(getCreateBookQuery)
