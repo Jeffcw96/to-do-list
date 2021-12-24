@@ -1,15 +1,18 @@
 import appModel from './model'
 import dcBook from '@/dataComponent/book'
 import { GetRequestParamsInputType } from '@/utils/getRequestParams'
+import { FailToGetBookListException } from '@/config/exception/book'
 
-export default async function getBookListApplication(inputData: any){
+export default async function getBookApplication(inputData: any){
     try {
         const AppModel = new appModel(inputData)
-        const getBookListQuery = AppModel.getBookListQuery()
-        const result = await dcBook.find(getBookListQuery)
-        console.log("get book list result",result)
-        // const getAggregateBookListQuery = AppModel.getAggregateBookListQuery()
-        // const result = await dcBook.aggregate(getAggregateBookListQuery)
+        let result
+        try {
+            const getBookListQuery = AppModel.getBookListQuery()
+            result = await dcBook.find(getBookListQuery)
+        } catch (error) {
+            throw new FailToGetBookListException()
+        }
 
         return result
     } catch (error:any) {

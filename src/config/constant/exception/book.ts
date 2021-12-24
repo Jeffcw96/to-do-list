@@ -20,3 +20,17 @@ export function failToUpdateBookException(){
         errorCode: "BOOK_ERROR_003"
     }
 }
+export function failToGetBookException(){
+    return{
+        title:'Fail to get book',
+        message:'Fail to get book',
+        errorCode: "BOOK_ERROR_004"
+    }
+}
+export function failToDeleteBookException(){
+    return{
+        title:'Fail to delete book',
+        message:'Fail to delete book',
+        errorCode: "BOOK_ERROR_005"
+    }
+}

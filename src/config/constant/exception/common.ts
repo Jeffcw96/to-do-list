@@ -14,3 +14,11 @@ export function failToGetRecordException(){
     }
 }
 
+export function failToDeleteRecordException(){
+    return{
+        title:'Fail to delete record',
+        message:'Fail to delete record',
+        errorCode: "COMMON_ERROR_003"
+    }
+}
+

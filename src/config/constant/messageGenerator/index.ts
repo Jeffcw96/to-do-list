@@ -1,5 +1,6 @@
 import update from "./update";
-
+import deleteRecord from "./delete";
 export default{
-    update
+    update,
+    delete: deleteRecord
 }

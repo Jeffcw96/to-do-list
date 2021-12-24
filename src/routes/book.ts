@@ -7,7 +7,9 @@ router.route('/')
     .get(book.getBookList)
 
 router.route('/:id')
+    .get(book.getBook)
     .put(book.updateBook)
+    .delete(book.deleteBook)
 
 
 export default router
