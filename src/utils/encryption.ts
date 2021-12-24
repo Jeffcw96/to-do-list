@@ -114,10 +114,13 @@ export const encryptionBuffer = (text:string) =>{
 }
 
 export const decryptionBuffer = (binary:Buffer) =>{
-    const encryptedText = binary.toString()
-    const decrptedText = securedData.decrypt(encryptedText)
+    if(binary){
+        const encryptedText = binary.toString()
+        const decrptedText = securedData.decrypt(encryptedText)
+    
+        return decrptedText
+    }
 
-    return decrptedText
 }
 
 export const encrypt = enc.encrypt

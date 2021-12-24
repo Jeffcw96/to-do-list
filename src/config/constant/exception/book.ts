@@ -13,3 +13,10 @@ export function failToGetBookListException(){
         errorCode: "BOOK_ERROR_002"
     }
 }
+export function failToUpdateBookException(){
+    return{
+        title:'Fail to update book list',
+        message:'Fail to update book list',
+        errorCode: "BOOK_ERROR_003"
+    }
+}

@@ -30,7 +30,7 @@ export default function generateResponseData(result:any){
         responseStatusCode = SUCCESS_STATUS
         if(result instanceof Object || result instanceof String){
             responseData = result
-        }else{
+        }else{           
             responseData = result.toString()
         }
 

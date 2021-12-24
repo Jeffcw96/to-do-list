@@ -16,4 +16,8 @@ export default{
         type:'regex',
         $option: 'i'
     },
+
+    published_datetime_utc:{
+        type:'date_range'
+    }
 }

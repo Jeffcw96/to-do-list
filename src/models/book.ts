@@ -32,6 +32,10 @@ const bookSchema = new mongoose.Schema({
             type:Buffer,
             set:encryptionBuffer,
             transform:decryptionBuffer
+        },
+        published_datetime_utc:{
+            type:Date,
+            default: new Date()
         }
     }, 
     {

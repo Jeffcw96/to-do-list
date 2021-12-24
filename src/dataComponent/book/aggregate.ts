@@ -1,8 +1,12 @@
-import BookModel from "../../models/book";
-import QueryGenerator from "../../utils/queryGenerator";
+import BookModel from "@/models/book";
+import QueryGenerator from "@/utils/queryGenerator";
 
 export default async function find(query:QueryGenerator){
-    const pipeline = query.getPipeline()
+    try {
+        const pipeline = query.getPipeline()
+        return await BookModel.aggregate(pipeline)
+    } catch (error) {
+        return error
+    }
 
-    return await BookModel.aggregate(pipeline)
 }

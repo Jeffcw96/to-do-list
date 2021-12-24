@@ -6,5 +6,8 @@ router.route('/')
     .post(book.createBook)
     .get(book.getBookList)
 
+router.route('/:id')
+    .put(book.updateBook)
+
 
 export default router

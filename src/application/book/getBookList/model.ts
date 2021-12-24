@@ -1,7 +1,8 @@
-import QueryGenerator from "../../../utils/queryGenerator";
+import QueryGenerator from "@/utils/queryGenerator";
 import processGetRequestParams,{GetRequestParamsInputType,OutputParamsInterface} from "@/utils/getRequestParams";
 import extractAdvanceFilterQuery from "@/utils/extractAdvanceFilterQuery";
 import bookAdvanceFilter from "@/config/constant/advanceFilter/book";
+
 export default class GetBookListModel implements OutputParamsInterface{
     advancedFilter: object
     sortBy: string 

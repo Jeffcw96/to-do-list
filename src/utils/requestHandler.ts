@@ -5,12 +5,20 @@
 
 import { Request } from "express";
 
-export default (req:Request): Request =>{
+interface BodyInput<T>{
+    body: T
+}
+
+export type RequestInputInterface<T> = BodyInput<T> & {
+    [k:string]: any
+}
+
+export default (req:Request) =>{
     let body = req.body || {}
     let params = req.params || {}
     let query = req.query || {}
 
-    return Object.assign({}, body, params,query)
+    return Object.assign({}, {body: body}, params,query)
 }
 
 

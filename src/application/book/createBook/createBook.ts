@@ -1,25 +1,22 @@
-import {Request, Response} from 'express'
 import appModel from './model'
-import dcBook from '../../../dataComponent/book'
-
+import dcBook from '@/dataComponent/book'
+import { BookInterface } from "@/models/book";
+import { RequestInputInterface } from "@/utils/requestHandler";
 import {FailToInsertBookException} from '@/config/exception/book'
 
-
-export default async function createBookApplication(inputData : any){
+export default async function createBookApplication(inputData : RequestInputInterface<BookInterface>){
     try {
-        console.log("create book application")
         let result
         const AppModel = new appModel(inputData)
         try {
             const getCreateBookQuery = AppModel.getCreateBookQuery()
             result = dcBook.create(getCreateBookQuery)
         } catch (error) {
-            console.error(error)
             throw new FailToInsertBookException()
         }
 
         return result
-    } catch (error:any) {
+    } catch (error:Error | unknown) {
         return error
     }
 }
