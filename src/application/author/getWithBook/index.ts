@@ -1,0 +1,2 @@
+import getAuthorWithBooksApplication from './getWithBook'
+export default getAuthorWithBooksApplication

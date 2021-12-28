@@ -1,5 +1,5 @@
 import {v1} from 'uuid'
 
-export default{
-    v1
+export default  function generateRefId(){
+    return v1()
 }

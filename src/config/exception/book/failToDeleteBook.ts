@@ -1,8 +1,8 @@
 import Exception from "@/utils/responseHandler/exception";
-import  {failToDeleteBookException}  from "@/config/constant/exception/book";
+import { failToDeleteAuthorException } from "@/config/constant/exception/author";
 
-export default class FailToDeleteBookException extends Exception{
+export default class FailToDeleteAuthorException extends Exception{
     constructor(){
-        super(failToDeleteBookException())
+        super(failToDeleteAuthorException())
     }
 }

@@ -3,7 +3,8 @@ import { encryptionBuffer, decryptionBuffer } from "@/utils/encryption";
 import mongoose from "mongoose";
 
 export interface BookInterface{
-    author: string;
+    ref_id:string,
+    author_ref_id: string;
     book_collection: string;
     name: string;
     weight:number;
@@ -11,12 +12,15 @@ export interface BookInterface{
 }
 
 export interface BookDocument extends BookInterface, mongoose.Document{
-    createdAt: Date;
-    updatedAt: Date;
+    created_datetime_utc: Date;
+    updated_datetime_utc: Date;
 }
 
 const bookSchema = new mongoose.Schema({
-        author: {
+        ref_id:{
+            type:String
+        },
+        author_ref_id: {
             type:String,
         },
         book_collection: {
@@ -43,6 +47,7 @@ const bookSchema = new mongoose.Schema({
             createdAt: 'created_datetime_utc',
             updatedAt: 'updated_datetime_utc'
         },
+        collection:"Book",
         versionKey:false
     });
 

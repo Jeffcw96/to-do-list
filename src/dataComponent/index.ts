@@ -1,5 +1,6 @@
 import book from "./book";
-
+import author from "./author";
 export default{
-    dcBook:book
+    dcBook:book,
+    dcAuthor:author
 }
