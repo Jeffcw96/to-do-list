@@ -12,13 +12,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const server_1 = __importDefault(require("./server"));
-const db_1 = __importDefault(require("./utils/db"));
-require("module-alias/register");
-require('dotenv').config();
-(0, db_1.default)();
-const app = (0, server_1.default)();
-const port = process.env.PORT || 3000;
-app.listen(port, () => __awaiter(void 0, void 0, void 0, function* () {
-    console.log(`App is running in port ${port}`);
-}));
+const book_1 = __importDefault(require("../../application/book"));
+const responseHandler_1 = __importDefault(require("@/utils/responseHandler"));
+const requestHandler_1 = __importDefault(require("@/utils/requestHandler"));
+function getBookListController(req, res) {
+    return __awaiter(this, void 0, void 0, function* () {
+        console.log("get book list controller");
+        const inputData = (0, requestHandler_1.default)(req);
+        const result = yield book_1.default.getBookList(inputData);
+        (0, responseHandler_1.default)(res, result);
+    });
+}
+exports.default = getBookListController;

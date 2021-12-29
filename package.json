@@ -4,11 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "dev": "ts-node-dev -r tsconfig-paths/register src/app.ts "
   },
   "author": "",
   "license": "ISC",
+  "type": "module",
   "dependencies": {
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
@@ -27,12 +28,20 @@
     "@types/lodash": "^4.14.178",
     "@types/mongoose": "^5.11.97",
     "@types/node": "^16.11.12",
+    "@types/supertest": "^2.0.11",
     "@types/uuid": "^8.3.3",
+    "jest": "^27.4.5",
+    "mongodb-memory-server": "^8.1.0",
+    "supertest": "^6.1.6",
+    "ts-jest": "^27.1.2",
     "ts-node-dev": "^1.1.8",
     "tsconfig-paths": "^3.12.0",
     "typescript": "^4.5.4"
   },
   "_moduleAliases": {
-    "@": "dist/"
+    "@": "src/"
+  },
+  "moduleNameMapper": {
+    "^@/(.*)": "<rootDir>/src/"
   }
 }

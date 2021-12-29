@@ -12,13 +12,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const server_1 = __importDefault(require("./server"));
-const db_1 = __importDefault(require("./utils/db"));
-require("module-alias/register");
-require('dotenv').config();
-(0, db_1.default)();
+const supertest_1 = __importDefault(require("supertest"));
+const server_1 = __importDefault(require("../server"));
 const app = (0, server_1.default)();
-const port = process.env.PORT || 3000;
-app.listen(port, () => __awaiter(void 0, void 0, void 0, function* () {
-    console.log(`App is running in port ${port}`);
-}));
+describe('author', () => {
+    it('it should return 200 when record is created', () => __awaiter(void 0, void 0, void 0, function* () {
+        const res = yield (0, supertest_1.default)(app).post('/api/author').send({ name: "Wohoo Baby" });
+        expect(res.statusCode).toEqual(200);
+    }));
+});

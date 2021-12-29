@@ -12,13 +12,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const server_1 = __importDefault(require("./server"));
-const db_1 = __importDefault(require("./utils/db"));
-require("module-alias/register");
-require('dotenv').config();
-(0, db_1.default)();
-const app = (0, server_1.default)();
-const port = process.env.PORT || 3000;
-app.listen(port, () => __awaiter(void 0, void 0, void 0, function* () {
-    console.log(`App is running in port ${port}`);
-}));
+const book_1 = __importDefault(require("@/models/book"));
+function updateMany(query) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const update = query.getUpdate();
+            const filter = query.getFilter();
+            return yield book_1.default.updateMany(filter, update);
+        }
+        catch (error) {
+            return error;
+        }
+    });
+}
+exports.default = updateMany;

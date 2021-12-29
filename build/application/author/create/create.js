@@ -12,13 +12,26 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const server_1 = __importDefault(require("./server"));
-const db_1 = __importDefault(require("./utils/db"));
-require("module-alias/register");
-require('dotenv').config();
-(0, db_1.default)();
-const app = (0, server_1.default)();
-const port = process.env.PORT || 3000;
-app.listen(port, () => __awaiter(void 0, void 0, void 0, function* () {
-    console.log(`App is running in port ${port}`);
-}));
+const model_1 = __importDefault(require("./model"));
+const author_1 = __importDefault(require("@/dataComponent/author"));
+const author_2 = require("@/config/exception/author");
+function createAuthorApplication(inputData) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            let result;
+            const AppModel = new model_1.default(inputData);
+            try {
+                const getCreateAuthorQuery = AppModel.getCreateAuthorQuery();
+                result = author_1.default.create(getCreateAuthorQuery);
+            }
+            catch (error) {
+                throw new author_2.FailToInsertAuthorException();
+            }
+            return result;
+        }
+        catch (error) {
+            return error;
+        }
+    });
+}
+exports.default = createAuthorApplication;

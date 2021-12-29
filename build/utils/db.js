@@ -12,13 +12,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const server_1 = __importDefault(require("./server"));
-const db_1 = __importDefault(require("./utils/db"));
-require("module-alias/register");
-require('dotenv').config();
-(0, db_1.default)();
-const app = (0, server_1.default)();
-const port = process.env.PORT || 3000;
-app.listen(port, () => __awaiter(void 0, void 0, void 0, function* () {
-    console.log(`App is running in port ${port}`);
-}));
+const mongoose_1 = __importDefault(require("mongoose"));
+function connect() {
+    return __awaiter(this, void 0, void 0, function* () {
+        const dbUri = process.env.mongoConnection || 'mongodb://localhost:27017/todo';
+        try {
+            yield mongoose_1.default.connect(dbUri);
+            console.log("Connected to DB");
+        }
+        catch (error) {
+            console.error("Failed Connect to DB");
+            process.exit(1);
+        }
+    });
+}
+exports.default = connect;
