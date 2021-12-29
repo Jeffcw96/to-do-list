@@ -7,12 +7,14 @@ export default class GetBookListModel implements OutputParamsInterface{
     advancedFilter: object
     fields: string | undefined
     id:string
+    authorId: string
 
     constructor(params:any){
         const queryParams:OutputParamsInterface = processGetRequestParams(params)
         this.advancedFilter = extractAdvanceFilterQuery(params,bookAdvanceFilter)
         this.fields = queryParams.fields
         this.id = params.id
+        this.authorId = params.author_id
     }
  
     getBookQuery(){
@@ -20,7 +22,8 @@ export default class GetBookListModel implements OutputParamsInterface{
         
         //Insert additional custom filter in object below
         let filter = {
-            _id: this.id
+            ref_id: this.id,
+            author_ref_id: this.authorId
         }
 
         if(this.fields){

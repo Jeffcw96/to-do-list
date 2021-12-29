@@ -8,7 +8,8 @@ export default class GetBookListModel implements OutputParamsInterface{
     sortBy: string 
     fields: string | undefined
     limit: number 
-    skip: number 
+    skip: number
+    authorId: string 
 
     constructor(params: GetRequestParamsInputType){
         const queryParams:OutputParamsInterface = processGetRequestParams(params)
@@ -17,6 +18,7 @@ export default class GetBookListModel implements OutputParamsInterface{
         this.fields = queryParams.fields
         this.limit = queryParams.limit || 100
         this.skip = queryParams.skip || 0
+        this.authorId = params.author_id
     }
  
     getBookListQuery(){
@@ -24,7 +26,8 @@ export default class GetBookListModel implements OutputParamsInterface{
         
         //Insert additional custom filter in object below
         let filter = {
-            ...this.advancedFilter
+            ...this.advancedFilter,
+            author_ref_id: this.authorId
         }
 
         if(this.fields){

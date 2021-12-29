@@ -4,16 +4,19 @@ import { RequestInputInterface } from "@/utils/requestHandler";
 
 export default class UpdateBookModel{
     id: string
+    authorId: string
 
     constructor(params:RequestInputInterface<BookInterface>){
         this.id = params.id
+        this.authorId = params.author_id
     }
 
     getUpdateQuery(){
         const query = new QueryGenerator()
         
         let filter = {
-            _id: this.id
+            ref_id: this.id,
+            author_ref_id: this.authorId
         }
 
         query.setFilter(filter)

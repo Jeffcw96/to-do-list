@@ -1,2 +1,2 @@
-import getBookList from './get'
-export default getBookList
+import getAuthor from './get'
+export default getAuthor

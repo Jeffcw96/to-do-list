@@ -3,7 +3,10 @@ import { Router } from "express"
 
 const router = Router()
 router.route('/')
-    .post(author.createAuthor)
+    .post(author.createAuthor)    
+
+router.route('/:id')
+    .get(author.getAuthor)
 
 router.route('/:id/books')
     .get(author.getAuthorWithBooks)

@@ -9,6 +9,7 @@ export interface GetRequestParamsInputType {
     limit?: string,
     page?: string,
     fields?:string,
+    [k : string] : any
 }
 
 export interface OutputParamsInterface{
