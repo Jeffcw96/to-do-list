@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "clear_jest": "jest --clearCache",
     "test": "jest",
     "dev": "ts-node-dev -r tsconfig-paths/register src/app.ts "
   },

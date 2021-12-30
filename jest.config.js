@@ -3,7 +3,6 @@ export default {
   preset: 'ts-jest',
   testEnvironment: 'node',
   testMatch:["**/**/*.test.ts"], 
-  verbose:false,
   forceExit:true,
   moduleNameMapper: {
     "^@/(.*)": "<rootDir>/src/$1"

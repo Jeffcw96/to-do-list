@@ -10,7 +10,7 @@ export default async function getAuthorApplication(inputData: any){
         try {
             const getAuthorQuery = AppModel.getBookQuery()
             result = await dcAuthor.findOne(getAuthorQuery)
-
+            console.log("result",result)
             if(!result){
                 return new RecordNotFoundException()
             }
