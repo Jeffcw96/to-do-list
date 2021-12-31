@@ -6,7 +6,7 @@ type SchemaErrorType = {
 }
 
 export default function schemaErrorHandler(error:ValidationError){
-    const errorArray = error.inner.reduce((acc:SchemaErrorType[],val:ValidationError)=>{
+    const errorArray = error.inner.reduce((acc:SchemaErrorType[],val:ValidationError):SchemaErrorType[]=>{
         if(val.path && val.message){
             return [...acc, {field: val.path, error: val.message}]
         }
