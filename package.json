@@ -7,7 +7,8 @@
     "clear_jest": "jest --clearCache",
     "test": "jest",
     "dev": "ts-node-dev -r tsconfig-paths/register src/app.ts ",
-    "build": "tsc"
+    "build": "tsc",
+    "start": "NODE_PATH=./build node build/index.js"
   },
   "author": "",
   "license": "ISC",
