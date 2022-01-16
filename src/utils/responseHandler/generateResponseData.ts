@@ -9,7 +9,7 @@ export default function generateResponseData(result:any){
 
     if(result instanceof Exception){
         // if it's a Exception (formatted error)
-
+        
         responseStatusCode = result.getStatusCode()
         responseData = result.toJSON()
 

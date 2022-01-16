@@ -7,5 +7,8 @@ export default {
   moduleNameMapper: {
     "^@/(.*)": "<rootDir>/src/$1"
   },
-  testTimeout: 30000
+  testTimeout: 30000,
+  transformIgnorePatterns: [
+    "node_modules/(?!@ngrx|(?!deck.gl)|ng-dynamic)"
+  ]
 };

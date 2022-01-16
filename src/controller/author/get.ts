@@ -7,5 +7,6 @@ export default async function getBookController(req:Request, res:Response){
     // console.log("get author controller")
     const inputData = requestHandler(req)
     const result = await authorApplication.getAuthor(inputData)
+    console.log("get author  result", result)
     responseHandler(res,result)
 }
