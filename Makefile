@@ -3,6 +3,6 @@ dev-docker-no-cache:
 	docker-compose build --no-cache
 	docker-compose up -d
 
-production-build: 
+production: 
 	npm run build
 	npm run start
