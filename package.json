@@ -8,11 +8,10 @@
     "test": "jest",
     "dev": "ts-node-dev -r tsconfig-paths/register src/app.ts ",
     "build": "tsc",
-    "start": "NODE_PATH=./build node build/index.js"
+    "start": "TS_NODE_BASEURL=./build node -r tsconfig-paths/register build/app.js"
   },
   "author": "",
   "license": "ISC",
-  "type": "module",
   "dependencies": {
     "cors": "^2.8.5",
     "crypto": "^1.0.1",

@@ -2,7 +2,10 @@ import mongoose from 'mongoose'
 
 
 async function connect() {
-    const dbUri = process.env.mongoConnection || 'mongodb://mongo:27017/todo'
+
+    // const dbUri = process.env.mongoConnection || 'mongodb://localhost:27017/todo'
+    const dbUri = 'mongodb://mongo:27017/todo'
+    
     try {
         await mongoose.connect(dbUri)
         console.log("Connected to DB")
