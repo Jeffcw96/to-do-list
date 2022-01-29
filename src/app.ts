@@ -1,6 +1,5 @@
 import createServer from "./server";
 import db from './utils/db'
-import 'module-alias/register';
 require('dotenv').config();
 db()
 
